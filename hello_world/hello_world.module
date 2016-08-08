@@ -25,3 +25,12 @@ function hello_world_theme($existing, $type, $theme, $path) {
     ),
   );
 }
+
+/**
+ * Implements hook_entity_type_alter().
+ */
+function hello_world_entity_type_alter(array &$entity_types) {
+  $currency = $entity_types['currency'];
+  // TODO: figure out how to add a constraint properly
+  $currency->addConstraint('Length', ['max' => 5]);
+}

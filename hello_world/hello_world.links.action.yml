@@ -1,0 +1,21 @@
+# Add some local task links to facilitate navigation.
+
+hello_world.add_currency:
+  route_name: entity.currency.add_form
+  title: 'Add Currency'
+  appears_on:
+    - entity.currency.list
+
+hello_world.list_currencies:
+  route_name: entity.currency.list
+  title: 'List Currencies'
+  appears_on:
+    - entity.currency.add_form
+    - entity.currency.edit_form
+    - entity.currency.delete_form
+
+hello_world.sync_rates:
+  route_name: hello_world.currencies_sync
+  title: 'Sync rates'
+  appears_on:
+    - entity.currency_rate.list

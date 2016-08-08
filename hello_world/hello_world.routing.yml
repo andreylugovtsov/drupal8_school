@@ -1,0 +1,101 @@
+hello_world.content:
+  path: '/hello'
+  defaults:
+    _controller: '\Drupal\hello_world\Controller\HelloController::content'
+    _title: 'Hello World'
+  requirements:
+    _permission: 'access content'
+
+hello_world.currencies_list:
+  path: '/currencies'
+  defaults:
+    _controller: '\Drupal\hello_world\Controller\CurrenciesController::listAll'
+    _title: 'Currencies List'
+  requirements:
+    _permission: 'access content'
+
+hello_world.currencies_list_alias:
+  path: '/currencies_alias'
+  defaults:
+    _controller: '\Drupal\hello_world\Controller\CurrenciesController::listAllAlias'
+  requirements:
+    _permission: 'access content'
+
+hello_world.currencies_json:
+  path: '/currencies_json/{limit}'
+  defaults:
+    _controller: '\Drupal\hello_world\Controller\CurrenciesController::json'
+    limit: 0
+  requirements:
+   _permission: 'access content'
+
+hello_world.currencies_sync:
+  path: '/currencies_sync'
+  defaults:
+    _form: '\Drupal\hello_world\Form\CurrencySyncForm'
+    _title: 'Sync rates'
+  requirements:
+   _permission: 'access content'
+
+# ----------------------
+# Currency config entity routes
+# ----------------------
+entity.currency.list:
+  path: '/currency_entities'
+  defaults:
+    _entity_list: 'currency'
+    _title: 'Currency config entities'
+  requirements:
+    _permission: 'access content'
+
+entity.currency.add_form:
+  path: '/currency/add'
+  defaults:
+    _title: 'Add Currency'
+    _entity_form: currency.add
+  requirements:
+    _permission: 'access content'
+
+entity.currency.edit_form:
+  path: '/currency/manage/{currency}'
+  defaults:
+    _title: 'Edit Currency'
+    _entity_form: currency.edit
+  requirements:
+    _permission: 'access content'
+
+entity.currency.delete_form:
+  path: '/currency/manage/{currency}/delete'
+  defaults:
+    _title: 'Delete Currency'
+    _entity_form: currency.delete
+  requirements:
+    _permission: 'access content'
+
+
+# ----------------------
+# Currency rate entity routes
+# ----------------------
+entity.currency_rate.canonical:
+  path: '/currency_rate/{currency_rate}'
+  defaults:
+    _entity_view: 'currency_rate'
+    _title: 'Currency rate'
+  requirements:
+    _permission: 'access content'
+
+entity.currency_rate.list:
+  path: '/currency_rates_entities'
+  defaults:
+    _entity_list: 'currency_rate'
+    _title: 'Currency Rate list'
+  requirements:
+    _permission: 'access content'
+    
+entity.currency_rate.delete_form:
+  path: '/currency_rate/{currency_rate}/delete'
+  defaults:
+    _entity_form: 'currency_rate'
+    _title: 'Delete Currency Rate'
+  requirements:
+    _permission: 'access content'

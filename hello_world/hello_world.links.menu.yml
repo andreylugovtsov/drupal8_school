@@ -1,0 +1,17 @@
+hello_world.currencies:
+  title: Currencies list
+  route_name: hello_world.currencies_list
+  menu_name: main
+  weight: 2
+
+hello_world.currency_list:
+  title: Currency Configs
+  route_name: entity.currency.list
+  menu_name: main
+  weight: 3
+
+hello_world.currency_rate_list:
+  title: Currency Rates
+  route_name: entity.currency_rate.list
+  menu_name: main
+  weight: 4

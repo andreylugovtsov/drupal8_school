@@ -1,0 +1,16 @@
+hello_world.currency.*:
+  type: mapping
+  label: 'Currency'
+  mapping:
+    id:
+      type: string
+      label: 'Currency code'
+    name:
+      type: label
+      label: 'Name'
+    display_in_block:
+      type: boolean
+      label: 'Display in block'
+    display_on_page:
+      type: boolean
+      label: 'Display on page'

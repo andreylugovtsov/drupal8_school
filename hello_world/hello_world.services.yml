@@ -1,0 +1,11 @@
+services:
+  hello_world.hello_subscriber:
+    class: Drupal\hello_world\EventSubscriber\HelloSubscriber
+    tags:
+      - { name: event_subscriber }
+
+  hello_world.currencies_updater:
+    class: Drupal\hello_world\Service\CurrenciesUpdater
+
+  hello_world.currencies:
+    class: Drupal\hello_world\Service\Currencies

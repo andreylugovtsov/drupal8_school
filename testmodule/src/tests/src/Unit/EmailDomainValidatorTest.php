@@ -2,7 +2,7 @@
 
 namespace Drupal\Tests\testmodule\Unit;
 
-use Drupal\testmodule\Email\EmailParser;
+use Drupal\testmodule\Email\EmailEntity;
 use Drupal\Tests\UnitTestCase;
 use Drupal\testmodule\Email\EmailDomainValidator;
 
@@ -20,7 +20,15 @@ class EmailDomainValidatorTest extends UnitTestCase {
    * {@inheritdoc}
    */
   public function setUp() {
-    $this->validator = new EmailDomainValidator(new EmailParser());
+    $email_parser = $this->getMock('Drupal\testmodule\Email\EmailParser');
+    $email_parser->expects($this->any())
+      ->method('parse')
+      ->will($this->returnCallback(function($email) {
+        $email = explode('@', $email);
+        return new EmailEntity($email[0], $email[1]);
+      }));
+
+    $this->validator = new EmailDomainValidator($email_parser);
   }
 
   /**

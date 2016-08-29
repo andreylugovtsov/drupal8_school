@@ -99,3 +99,15 @@ entity.currency_rate.delete_form:
     _title: 'Delete Currency Rate'
   requirements:
     _permission: 'access content'
+
+# -----------------------------------
+# Cache routes
+# -----------------------------------
+
+cache.cache_and_logging:
+  path: '/andrey-lugovtsov-lesson8'
+  defaults:
+    _form: '\Drupal\hello_world\Form\CacheLoggingForm'
+    _title: 'Sync rates'
+  requirements:
+   _permission: 'access content'

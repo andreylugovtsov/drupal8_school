@@ -9,3 +9,16 @@ services:
 
   hello_world.currencies:
     class: Drupal\hello_world\Service\Currencies
+
+  cache.lesson8:
+    class: Drupal\Core\Cache\CacheBackendInterface
+    tags:
+      - { name: cache.bin }
+    factory: cache_factory:get
+    arguments: [lesson8]
+
+
+  logger.lesson8:
+    class: Drupal\hello_world\Service\CustomLogger
+    arguments: ['@logger.factory']
+

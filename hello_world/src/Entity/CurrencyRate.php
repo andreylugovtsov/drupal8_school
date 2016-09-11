@@ -53,13 +53,13 @@ class CurrencyRate extends ContentEntityBase implements CurrencyRateInterface {
     // Standard field, used as unique if primary index.
     $fields['id'] = BaseFieldDefinition::create('integer')
       ->setLabel(t('ID'))
-      ->setDescription(t('The ID of the Contact entity.'))
+      ->setDescription(t('The ID of the CurrencyRate entity.'))
       ->setReadOnly(TRUE);
 
     // Standard field, unique outside of the scope of the current project.
     $fields['uuid'] = BaseFieldDefinition::create('uuid')
       ->setLabel(t('UUID'))
-      ->setDescription(t('The UUID of the Contact entity.'))
+      ->setDescription(t('The UUID of the CurrencyRate entity.'))
       ->setReadOnly(TRUE);
 
     $fields['currency_code'] = BaseFieldDefinition::create('string')

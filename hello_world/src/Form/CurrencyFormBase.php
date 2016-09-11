@@ -6,6 +6,7 @@ use Drupal\Core\Entity\EntityForm;
 use Drupal\Core\Entity\Query\QueryFactory;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Link;
+use Drupal\file\Entity\File;
 use Drupal\hello_world\Entity\Currency;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
@@ -105,6 +106,16 @@ class CurrencyFormBase extends EntityForm {
       '#type' => 'checkbox',
       '#title' => $this->t('Display on page'),
       '#default_value' => $currency->display_on_page,
+    );
+    $form['currency_image'] = array(
+      '#type' => 'managed_file',
+      '#title' => $this->t('Currency image'),
+      '#upload_location' => 'public://images/',
+      '#required' => FALSE,
+      '#upload_validators' => array(
+        'file_validate_extensions' => array('gif png jpg jpeg'),
+        'file_validate_size' => array(1000000),
+      ),
     );
 
     // Return the form.

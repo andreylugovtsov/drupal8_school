@@ -34,3 +34,23 @@ function hello_world_entity_type_alter(array &$entity_types) {
   // TODO: figure out how to add a constraint properly
   $currency->addConstraint('Length', ['max' => 5]);
 }
+
+/**
+ * Implements hook_entity_create.
+ */
+function hello_world_entity_create(\Drupal\Core\Entity\EntityInterface $entity) {
+  if (!($entity instanceof \Drupal\file\Entity\File) || !$entity->isNew()) {
+    return;
+  }
+
+  // Instantiate the transliteration class.
+  $trans = \Drupal::service('transliteration');
+
+  $entity->setFilename(
+    $trans->transliterate($entity->getFilename(), 'en', 60)
+  );
+
+  $entity->setFileUri(
+    $trans->transliterate($entity->getFileUri(), 'en')
+  );
+}
